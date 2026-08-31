@@ -1,31 +1,589 @@
-<!-- LOCATION -->
-<div class="section-title">
-    📍 فروعنا
-</div>
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="location">
+    <title>كوزمتك صحارى</title>
 
-    <strong>
-        📍 بغداد
-    </strong>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    الشورجة — سوق الدهانة
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
 
-    <a
-        href="https://maps.google.com/maps?q=33.33959197998047%2C44.398075103759766&z=17&hl=ar"
-        target="_blank"
-        rel="noopener noreferrer">
-        فتح الموقع على Google Maps →
-    </a>
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            color: #222;
+            background: #f7f4f0;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-</div>
+        /* =====================================
+           BACKGROUND SLIDESHOW
+        ====================================== */
 
-<div class="location">
+        .background-slideshow {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            overflow: hidden;
+            background: #f7f4f0;
+        }
 
-    <strong>
-        📍 كربلاء
-    </strong>
+        .background-slide {
+            position: absolute;
+            inset: 0;
 
-    شارع صاحب الزمان — قيصرية الفضيلة — قرب ابن الهندي
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
 
-</div>
+            opacity: 0;
+
+            animation: backgroundFade 30s infinite;
+
+            transform: scale(1.03);
+        }
+
+        /* الصورة الأولى */
+        .background-slide:nth-child(1) {
+            background-image: url("images/product1.jpg");
+            animation-delay: 0s;
+        }
+
+        /* الصورة الثانية */
+        .background-slide:nth-child(2) {
+            background-image: url("images/product2.jpg");
+            animation-delay: 6s;
+        }
+
+        /* الصورة الثالثة */
+        .background-slide:nth-child(3) {
+            background-image: url("images/product3.jpg");
+            animation-delay: 12s;
+        }
+
+        /* الصورة الرابعة */
+        .background-slide:nth-child(4) {
+            background-image: url("images/product4.jpg");
+            animation-delay: 18s;
+        }
+
+        /* الصورة الخامسة */
+        .background-slide:nth-child(5) {
+            background-image: url("images/product5.jpg");
+            animation-delay: 24s;
+        }
+
+        /*
+           كل صورة تظهر لمدة تقريبية
+           ثم تختفي تدريجيًا وتظهر التالية
+        */
+
+        @keyframes backgroundFade {
+
+            0% {
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            18% {
+                opacity: 1;
+            }
+
+            23% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================
+           BACKGROUND OVERLAY
+        ====================================== */
+
+        .background-overlay {
+            position: fixed;
+            inset: 0;
+
+            z-index: -2;
+
+            background: rgba(247, 244, 240, 0.78);
+
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+        }
+
+
+        /* =====================================
+           MAIN CONTAINER
+        ====================================== */
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+
+            margin: auto;
+
+            padding: 35px 20px 45px;
+
+            text-align: center;
+        }
+
+
+        /* =====================================
+           LOGO
+        ====================================== */
+
+        .logo {
+            width: 90px;
+            height: 90px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        /* =====================================
+           TITLE
+        ====================================== */
+
+        h1 {
+            margin: 0;
+
+            font-size: 30px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================
+           TAGLINE
+        ====================================== */
+
+        .tagline {
+            margin: 12px 0 10px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            color: #8a6a45;
+        }
+
+
+        /* =====================================
+           DESCRIPTION
+        ====================================== */
+
+        .description {
+            line-height: 1.8;
+
+            font-size: 15px;
+
+            color: #555;
+
+            margin: 0 auto 28px;
+
+            max-width: 450px;
+        }
+
+
+        /* =====================================
+           SECTION TITLE
+        ====================================== */
+
+        .section-title {
+            text-align: right;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            margin: 25px 5px 10px;
+        }
+
+
+        /* =====================================
+           BUTTONS
+        ====================================== */
+
+        .button {
+            display: block;
+
+            width: 100%;
+
+            padding: 16px 18px;
+
+            margin: 11px 0;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            color: #222;
+
+            text-decoration: none;
+
+            border-radius: 14px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 7px 20px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* =====================================
+           LOCATION CARDS
+        ====================================== */
+
+        .location {
+            background: rgba(255, 255, 255, 0.92);
+
+            border-radius: 14px;
+
+            padding: 16px;
+
+            margin: 11px 0;
+
+            text-align: right;
+
+            line-height: 1.8;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .location strong {
+            display: block;
+
+            margin-bottom: 3px;
+        }
+
+        .location a {
+            display: inline-block;
+
+            margin-top: 8px;
+
+            color: #8a6a45;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .location a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ====================================== */
+
+        .footer {
+            margin-top: 35px;
+
+            color: #777;
+
+            font-size: 13px;
+
+            background: rgba(255, 255, 255, 0.55);
+
+            padding: 8px 12px;
+
+            border-radius: 10px;
+
+            display: inline-block;
+
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+
+        /* =====================================
+           MOBILE
+        ====================================== */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding:
+                    28px
+                    16px
+                    40px;
+            }
+
+            .logo {
+                width: 85px;
+                height: 85px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .tagline {
+                font-size: 15px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .button {
+                padding: 15px 14px;
+
+                font-size: 15px;
+            }
+
+            .background-slide {
+                background-position: center;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         BACKGROUND SLIDESHOW
+    ====================================== -->
+
+    <div class="background-slideshow">
+
+        <div class="background-slide"></div>
+
+        <div class="background-slide"></div>
+
+        <div class="background-slide"></div>
+
+        <div class="background-slide"></div>
+
+        <div class="background-slide"></div>
+
+    </div>
+
+
+    <!-- =====================================
+         BACKGROUND OVERLAY
+    ====================================== -->
+
+    <div class="background-overlay"></div>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <div class="container">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <img
+                src="images/logo.png"
+                alt="كوزمتك صحارى">
+
+        </div>
+
+
+        <!-- BUSINESS NAME -->
+
+        <h1>
+            كوزمتك صحارى
+        </h1>
+
+
+        <!-- TAGLINE -->
+
+        <div class="tagline">
+            منتجات أصلية • طبيعية • فعّالة • آمنة
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="description">
+
+            منتجات مختارة بعناية للعناية والجمال،
+            نحرص على تقديم منتجات أصلية وعالية الجودة
+            تجمع بين الفعالية والأمان والموثوقية.
+
+        </p>
+
+
+        <!-- =================================
+             CONTACT
+        ================================== -->
+
+        <div class="section-title">
+            📞 للتواصل والطلب
+        </div>
+
+
+        <a
+            class="button"
+            href="tel:+9647803899938">
+
+            📞 أحمد الخفاجي — 07803899938
+
+        </a>
+
+
+        <a
+            class="button"
+            href="tel:+9647706366943">
+
+            📞 محمد الخفاجي — 07706366943
+
+        </a>
+
+
+        <a
+            class="button"
+            href="tel:+9647815650940">
+
+            📞 ياسر — 07815650940
+
+        </a>
+
+
+        <!-- =================================
+             TELEGRAM
+        ================================== -->
+
+        <div class="section-title">
+            ✈️ تواصل معنا
+        </div>
+
+
+        <a
+            class="button"
+            href="https://t.me/hazaryt200"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            ✈️ Telegram
+
+        </a>
+
+
+        <!-- =================================
+             BRANCHES
+        ================================== -->
+
+        <div class="section-title">
+            📍 فروعنا
+        </div>
+
+
+        <!-- BAGHDAD -->
+
+        <div class="location">
+
+            <strong>
+                📍 بغداد
+            </strong>
+
+            الشورجة — سوق الدهانة
+
+
+            <a
+                href="https://maps.google.com/maps?q=33.33959197998047%2C44.398075103759766&z=17&hl=ar"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                فتح الموقع على Google Maps →
+
+            </a>
+
+        </div>
+
+
+        <!-- KARBALA -->
+
+        <div class="location">
+
+            <strong>
+                📍 كربلاء
+            </strong>
+
+            شارع صاحب الزمان — قيصرية الفضيلة — قرب ابن الهندي
+
+        </div>
+
+
+        <!-- =================================
+             FOOTER
+        ================================== -->
+
+        <div class="footer">
+
+            كوزمتك صحارى © 2026
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>
+```
